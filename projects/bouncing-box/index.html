@@ -2,14 +2,16 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Bouncing Box</title>
+	<title>Catch The Sun</title>
 	<script src="jquery.min.js"></script>
 	<style>
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: rgb(236, 235, 126);
 			font-size: 300%;
+			font-family: 'Franklin Gothic Medium';
+			color: rgb(255, 175, 55);
 			text-align: center;
 			user-select: none;
 			display: block;
@@ -19,12 +21,26 @@
 		}
 		.board{
 			height: 100vh;
+			background-color: skyblue;
+			position: relative;
+		}
+		.grass {
+			background-color: rgb(14, 58, 20);
+			color: green;
+			font-size: 100px;
+			position: fixed;
+ 		 height: 80px;
+
+  		bottom: 0
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
 </head>
 <body class="board">
+	<div class = grass>
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	</div>
 	<!-- HTML for the box -->
 	<div class="box">?</div>
 
@@ -63,7 +79,9 @@
 			
 			// TODO 2 - Variable declarations 
 			
-
+			var positionX = 0
+			var points = 0
+			var speed = 10
 			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -71,8 +89,14 @@
 			turn it around! 
 			*/
 			function update() {
-				
-
+				/* Increase positionX by 10 here */
+				positionX = positionX + speed
+			moveBoxTo(positionX)
+			if (positionX > 1800) {
+				speed = speed * -1;
+			}else if (positionX < 0){
+				speed = speed * -1;
+			}
 			};
 
 			/* 
@@ -81,9 +105,15 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				
-
-
+				positionX = 0 ;
+				points = points + 1
+				speed = speed + 3
+				changeBoxText(points);
+				if (speed > 0) {
+					speed + 3
+				}else {
+					speed - 3
+				}
 			};
 		})();
 	</script>
