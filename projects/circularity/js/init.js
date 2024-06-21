@@ -24,7 +24,7 @@ var init = function (window) {
         var circles = [];
 
         // TODO 2 : Create a function that draws a circle 
-        function drawCircle {
+        function drawCircle () {
             // Code to draw a circle
 circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
 physikz.addRandomVelocity(circle, canvas, 2.5, 2.5);
@@ -33,11 +33,10 @@ circles.push(circle);
         }
 
         // TODO 3 / 7 : Call the drawCircle() function 
-        drawCircle();
-        drawCircle();
-        drawCircle();
-        drawCircle();
-        drawCircle();
+
+        for (var count = 0; count <= 100; count++) {
+            drawCircle(count)
+        }
     
 
         ////////////////////////////////////////////////////////////
@@ -51,15 +50,17 @@ circles.push(circle);
         */
         function update() {
             // TODO 4 : Update the circle's position //
-            physikz.updatePosition([0])
-            physikz.updatePosition([1])
-            physikz.updatePosition([2])
-            physikz.updatePosition([3])
-            physikz.updatePosition([4])
 
+            for (var count = 0; count <= 100; count++) {
+                physikz.updatePosition(circles[count])
+            }
+        
             
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
            
+            for (var count = 0; count <= 100; count++) {
+                game.checkCirclePosition(circles[count])
+            }
 
             // TODO 9 : Iterate over the array
            
@@ -79,7 +80,18 @@ circles.push(circle);
             }
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-            
+            if ( circle.x < 0 ) {
+                circle.x = canvas.width;
+            } else if ( circle.y < 0 ) {
+                circle.y = canvas.height;
+            } else if ( circle.y > canvas.height ) {
+                circle.y = 0;
+            }
+
+            var rightEdge = circle.x + circle.radius;
+            var leftEdge = circle.x - circle.radius;
+            var topEdge = circle.y + circle.radius;
+            var bottomEdge = circle.y - circle.radius;
 
 
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
