@@ -20,9 +20,9 @@ function resetAndRender() {
 // all of your apply functions
 function applyAndRender() {
   // Multiple TODOs: Call your apply function(s) here
-  applyFilterNoBackground(reddify(image));
-  applyFilterNoBackground(decreaseBlue(image));
-  applyFilterNoBackground(increaseGreenByBlue(image));
+  applyFilterNoBackground(reddify);
+  applyFilterNoBackground(decreaseBlue);
+  applyFilterNoBackground(increaseGreenByBlue);
   // do not change the below line of code
   render($("#display"), image);
 }
@@ -49,7 +49,7 @@ function applyFilterNoBackground(filterFuction) {
   var back = "rgb(150, 150, 150)";
   for (var i = 0; i < image.length; i++) {
     for (var j = 0; j < image[i].length; j++) {
-      if(image[i][j] != back){
+      if(image[i][j] !== back){
       var rgbString = image[i][j];
       var rgbNumbers = rgbStringToArray(rgbString);
       filterFuction(rgbNumbers);
@@ -76,7 +76,7 @@ function decreaseBlue(arr) {
 }
 
 function increaseGreenByBlue(arr) {
-  arr[green] = keepInBounds(arr[blue] + arr[green]);
+  arr[GREEN] = keepInBounds(arr[BLUE] + arr[GREEN]);
 }
 
 // CHALLENGE code goes below here
