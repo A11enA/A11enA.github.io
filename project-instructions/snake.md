@@ -746,7 +746,7 @@ You won't want to change that, but you'll need to use conditionals to set the va
 
 Submit your work regularly. Because these files are already being tracked by your GitHub repo, you can skip the "git add" step. Instead, enter the following commands:
 
-> git commit -a -m "finished snake game"
+git commi> t -a -m "finished snake game"
 > git push
 
 Congratulations on finishing the Snake game! You've built a fully functional game from scratch using HTML, CSS, and JavaScript. You've also learned how to use jQuery to manipulate HTML elements and how to organize your code using functions.
