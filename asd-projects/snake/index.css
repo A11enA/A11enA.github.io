@@ -4,8 +4,8 @@ body {
 }
 
 #board {
-  width: 440px;
-  height: 440px;
+  width: 412px;
+  height: 412px;
   border: 1px solid white;
   background-color: rgb(17, 92, 38);
   border-radius: 5px;
