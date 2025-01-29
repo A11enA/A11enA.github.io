@@ -20,7 +20,9 @@ var _ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-
+ _.identity = function(val){
+    return val;
+}
 
 
 /** _.indexOf
@@ -37,7 +39,14 @@ var _ = {};
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+_.indexOf = function(arr,val){
+    for (var i = 0; i <= arr.length; i++){
+        if (arr[i] === val){
+            return i
+        } 
+    }
+    return -1
+}
 
 
 /** _.contains
