@@ -63,7 +63,14 @@ _.indexOf = function(arr,val){
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
-
+_.contains = function(arr,val){
+    for (var i = 0; i < arr.length; i++){
+        if (arr[i] === val){
+            return true
+        }
+    }
+    return false
+}
 
 /** _.each
 * Arguments:
@@ -78,6 +85,13 @@ _.indexOf = function(arr,val){
 *      -> should log "a" "b" "c" to the console
 */
 
+_.each = function(colec,func){
+    if (Array.isArray(colec)){
+        for (var i = 0; i < colec.length; i++){
+            func(colec[i], i, colec);
+        }
+    }
+}
 
 
 /** _.filter
@@ -96,7 +110,15 @@ _.indexOf = function(arr,val){
 *   use _.each in your implementation
 */
 
-
+_.filter = function(arr, func){
+    var newArr = []
+    for (var i = 0; i < arr.length; i++){
+        if (func(arr[i],i,arr) === true){
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr
+}
 
 /** _.reject
 * Arguments:
@@ -111,7 +133,15 @@ _.indexOf = function(arr,val){
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
-
+_.reject = function(arr, func){
+    var newArr = []
+    for (var i = 0; i < arr.length; i++){
+        if (func(arr[i],i,arr) === false){
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr
+}
 
 /** _.map
 * Arguments:
@@ -127,7 +157,15 @@ _.indexOf = function(arr,val){
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
-
+_.map = function(colec, func){
+    var newArr = []
+    if (Array.isArray(colec)){
+        for (var i = 0; i < colec.length; i++){
+            newArr.push(func(colec[i],i,colec))
+        }
+    }
+    return newArr
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
