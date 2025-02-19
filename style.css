@@ -90,18 +90,6 @@ h2, h3 {
   text-decoration: none;
   color: #454545;
 }
-Extra Challenge
-Here's some other things to try:
-
-Google 'border radius' and add it to the nav selector to give the <nav> element rounded corners
-Add a border around the image
-Change the color of the background
-Add a favicon to your index.html and portfolio.html files
-Make website mobile responsive.
-
-Note: If you have preexisting style tags in your index.html file, you put the link to your style.css file with your responsive style rules at the bottom of the <head> tag.
-
-Here's some CSS to get you started on making your website mobile responsive
 
  /* responsive web design */
  @media screen and (min-width: 120px) and (max-width: 1080px) {
