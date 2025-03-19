@@ -51,7 +51,12 @@ $(document).ready(function () {
     }
 
     // TODO 3: Initialize high and low records
-
+    const json = {
+      highest: 0,
+      lowest: 100,
+      highID: "#json-highest",
+      lowID: "#json-lowest",
+    };
     // TODO 4: Update high and low records
 
     // TODO 5: Regular JSON Polling
