@@ -54,17 +54,83 @@ $(document).ready(function () {
     const json = {
       highest: 0,
       lowest: 100,
-      highID: "#json-highest",
-      lowID: "#json-lowest",
+      highID: "json-highest",
+      lowID: "json-lowest",
     };
-    // TODO 4: Update high and low records
 
+    const ajax = {
+      highest: 0,
+      lowest: 100,
+      highID: "ajax-highest",
+      lowID: "ajax-lowest",
+    };
+    const ws = {
+      highest: 0,
+      lowest: 100,
+      highID: "ws-highest",
+      lowID: "ws-lowest",
+    };
+
+    $("#json-chart-container").append(
+      `<p id=${json.highID}>Highest recorded JSON value is ${json.highest}</p>`
+    );
+    $("#ajax-chart-container").append(
+      `<p id=${ajax.highID}>Highest recorded ajax value is ${ajax.highest}</p>`
+    );
+    $("#ws-chart-container").append(
+      `<p id=${ws.highID}>Highest recorded ws value is ${ws.highest}</p>`
+    );
+
+    $("#json-chart-container").append(
+      `<p id=${json.lowID}>Lowest recorded JSON value is ${json.lowest}</p>`
+    );
+    $("#ajax-chart-container").append(
+      `<p id=${ajax.lowID}>Lowest recorded ajax value is ${ajax.lowest}</p>`
+    );
+    $("#ws-chart-container").append(
+      `<p id=${ws.lowID}>Lowest recorded ws value is ${ws.lowest}</p>`
+    );
+    // TODO 4: Update high and low records
+    function updateRecords(value, type) {
+      if (value > type.highest) {
+        type.highest = value;
+        $("#" + type.highID).text(`Highest recorded value is ${type.highest}`);
+      }
+      if (value < type.lowest) {
+        type.lowest = value;
+        $("#" + type.lowID).text(`Lowest recorded value is ${type.lowest}`);
+      }
+    }
     // TODO 5: Regular JSON Polling
+    function doJSONPoll() {
+      $.getJSON("http://localhost:3333/", function (result) {
+        // Callback code will go here in the next steps
+
+        addDataPoint(result, jsonData, jsonChart);
+        updateRecords(result.value, json);
+      });
+    }
+    setInterval(doJSONPoll, 2000);
 
     // TODO 6: AJAX Polling
-
+    function doAjaxPoll() {
+      $.ajax({
+        url: "http://localhost:3333/",
+        method: "GET",
+        dataType: "json",
+        success: function (result) {
+          addDataPoint(result, ajaxData, ajaxChart);
+          updateRecords(result.value, ajax);
+        },
+      });
+    }
+    setInterval(doAjaxPoll, 2000);
     // TODO 7: WebSocket Polling
+    const wss = new WebSocket.Server({ server });
 
+    setInterval(function () {
+      /* Code to send temperature data will go here */
+    }, 1000);
     // Do not work below this line
     function getTime() {
       var d = new Date();
