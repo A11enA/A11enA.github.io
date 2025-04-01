@@ -126,7 +126,19 @@ $(document).ready(function () {
     }
     setInterval(doAjaxPoll, 2000);
     // TODO 7: WebSocket Polling
-    const wss = new WebSocket.Server({ server });
+
+    var socket = new WebSocket("ws://localhost:3333/");
+
+    socket.onmessage = function (event) {
+      var result = JSON.parse(event.data);
+      console.log(result);
+      addDataPoint(result, wsData, wsChart);
+      updateRecords(result.value, ws);
+    };
+
+    socket.onerror = function (error) {
+      console.error("WebSocket error:", error);
+    };
 
     setInterval(function () {
       /* Code to send temperature data will go here */
