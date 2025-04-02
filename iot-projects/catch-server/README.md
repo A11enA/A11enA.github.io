@@ -217,10 +217,10 @@ At this point, your server is created but not yet fully functional. We’ll add 
 
 3. **Check the Request Method and Handle `GET` Requests**
    - Within the `try` block, add code to check the HTTP method of each request.
-     - **If the method is `GET`**, respond with the current status of the server, stored in the variable `serverStatus`.
+     - **If the method is `GET`**, respond with the current status of the server, stored in the object `serverStatus`.
    - When handling the `GET` request:
-     - Write a response that sends the message contained in `serverStatus`.
-     - Then, set the response status code to **200** and specify the **Content-Type** as `text/plain`.
+     - Write a response that sends the message contained in `serverStatus.status`.
+     - Then, set the response status code to **200** and specify the **Content-Type** as `text/plain`. It is important that you set the header _after_ the response message is written. **Do not call res.end()**.
 
 > **NOTE:** You won’t be able to test this code until later in the project. Testing will be available after completing TODO 4.
 
@@ -236,25 +236,12 @@ At this point, your server is created but not yet fully functional. We’ll add 
 
 1. **Catch and Respond to Errors**
 
-   - Since the `serverStatus` variable is currently `undefined`, attempting to return its value will cause an error.
+   - Since the `serverStatus` variable is currently `undefined`, attempting to return its `.status` value will cause an error.
    - To handle this, use the **`catch` block** to capture the error and respond with a message indicating that the server isn’t ready yet.
 
 2. **Send an Error Message Back to the Client**
    - Inside the `catch` block, add code to:
      - Use **`res.write()`** to send the following message to the client: `"The server has no data."`
-     - Use **`res.writeHead()`** to set the status code to **500** and the content type to `text/plain`, indicating an error response.
-
-Example of `res.writeHead()` usage:
-
-```javascript
-res.writeHead(404, { "Content-Type": "text/json" });
-```
-
-In this example:
-
-- `404` is the status code, commonly used to indicate "Not Found."
-
-- `'Content-Type': 'application/json'` specifies the content type, allowing the client to interpret the response as JSON.
 
 <br><br><br><br>
 
@@ -321,8 +308,14 @@ If the output matches, your server is correctly handling errors and completing r
    - In the callback function for the `end` event:
      - Set `serverStatus` to be an empty object: `{}`.
      - Parse the `body` variable with **`JSON.parse()`** and set `serverStatus.status` equal to the parsed data.
-     - Use **`res.writeHead()`** to set the response status code to **200** and specify the content type as plain text.
-     - Send a message back to the client using **`res.write()`** with the text `"The server has been updated."`
+
+- After the second **`req.on()`** function call, use **`res.writeHead()`** to set the response status code to **200** and specify the content type as plain text.
+- Then send a message back to the client using **`res.write()`** with the text `"The server has been updated."`
+
+5. **Refactor the response from our GET request**
+   - After configuring the PUT request, we need to refactor the response from our GET request to include the server status message.
+     - Update the response message to include the `serverStatus.status` value.
+     - The response message should be: `serverStatus.status + "-and the message arrived"`
 
 ---
 
@@ -359,7 +352,7 @@ If the output matches, your server is correctly handling errors and completing r
    - Set the **request type** to `PUT` and the **URL** to `http://localhost:3000`.
    - In the **body** of the request, add a JSON object with the following format:
      ```json
-     { "message": "Server is running" }
+     { "status": "Server is running" }
      ```
    - **Send the request** and check the response.
      - You should see this message:
