@@ -7,17 +7,17 @@ function requestFunction(req, res) {
     if (req.method === "GET") {
         serverStatus = {};
       res.writehead(200, { "Content-Type": "text/plain" });
-      res.end(serverStatus.status + "-and the message arrived");
+      res.write(serverStatus);
     } else if (req.method === "PUT") {
       var body = "";
       req.on("data", function () {
         body += data.toString();
       });
-      req.on(end, function () {
-        serverStatus = {};
-        JSON.parse(body) = serverStatus.status
+      req.on("end", function () {
+        JSON.parse(body) = serverStatus
       });
     res.writehead(200 {"Content-Type": "text/plain"})
+    res.write("the server has been updated.")
     }
   } catch {
     res.write("The server has no data.");
