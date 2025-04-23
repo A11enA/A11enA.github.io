@@ -1,13 +1,12 @@
 const http = require("http");
 
-const port = 1111;
+const port = 4645;
 let serverStatus = undefined;
 function requestFunction(req, res) {
   try {
     if (req.method === "GET") {
-        serverStatus = {};
       res.writehead(200, { "Content-Type": "text/plain" });
-      res.write(serverStatus);
+      res.write(serverStatus.status);
     } else if (req.method === "PUT") {
       var body = "";
       req.on("data", function () {
@@ -16,7 +15,7 @@ function requestFunction(req, res) {
       req.on("end", function () {
         JSON.parse(body) = serverStatus
       });
-    res.writehead(200 {"Content-Type": "text/plain"})
+    res.writehead(200, {"Content-Type":"text/plain"})
     res.write("the server has been updated.")
     }
   } catch {
