@@ -5,18 +5,18 @@ let serverStatus = undefined;
 function requestFunction(req, res) {
   try {
     if (req.method === "GET") {
-      res.writehead(200, { "Content-Type": "text/plain" });
+      res.writeHead(200, { "Content-Type": "text/plain" });
       res.write(serverStatus.status);
     } else if (req.method === "PUT") {
       var body = "";
-      req.on("data", function () {
+      req.on("data", function (data) {
         body += data.toString();
       });
       req.on("end", function () {
-        JSON.parse(body) = serverStatus
+        serverStatus = JSON.parse(body);
       });
-    res.writehead(200, {"Content-Type":"text/plain"})
-    res.write("the server has been updated.")
+      res.writeHead(200, { "Content-Type": "text/plain" });
+      res.write("the server has been updated.");
     }
   } catch {
     res.writehead(500, { "Content-Type": "text/plain" });
