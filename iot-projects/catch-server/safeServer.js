@@ -19,7 +19,6 @@ function requestFunction(req, res) {
     res.write("the server has been updated.")
     }
   } catch {
-    res.write("The server has no data.");
     res.writehead(500, { "Content-Type": "text/plain" });
   } finally {
     res.write("-and the message arrived");
