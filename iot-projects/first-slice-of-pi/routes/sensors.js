@@ -10,6 +10,18 @@ const express = require('express'),
 		res.send(resources.pi.sensors.dht);
 	  });
 
+	  router.route("/dht/temperature").get(function (req, res, next) {
+		res.send(resources.pi.sensors.dht.temperature);
+	  });
+
+	  router.route("/dht/humidity").get(function (req, res, next) {
+		res.send(resources.pi.sensors.dht.humidity);
+	  });
+
+	  router.route("/pir").get(function (req, res, next) {
+		res.send(resources.pi.sensors.pir);
+	  });
+
 
 
 
