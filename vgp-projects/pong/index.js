@@ -105,7 +105,6 @@
     }
 
     // TODO 3 & 4 : bounce the ball off each of the paddles
-    function paddleHit() {
       if (
         ball.x >= paddleCPU.x &&
         ball.y >= paddleCPU.y &&
@@ -118,7 +117,6 @@
         ball.y <= paddlePlayer.y + heightPlayer
       ) {
         ball.xVelocity = -ball.xVelocity;
-      }
     }
     //  else if (ball.x === paddlePlayer.x||ball.x === paddleCPU.x){
     //   ball.yVelocity = -ball.yVelocity;
