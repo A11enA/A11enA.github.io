@@ -6,6 +6,9 @@
   const canvas = engine.getCanvas(); // object for referencing the height / width of the window
   const stage = engine.getStage(); // object to hold all visual components
 
+  canvas.height -= 5;
+  canvas.width -= 5;
+
   // load some sounds for the demo - play sounds using: createjs.Sound.play("wall");
   createjs.Sound.on("fileload", handleLoadComplete);
   createjs.Sound.alternateExtensions = ["mp3"];
@@ -88,21 +91,38 @@
     }
 
     // AI movement: CPU follows ball //
-    if ((paddleCPU.y + midCPU) < (ball.y - 14)) {
+    if (paddleCPU.y + midCPU < ball.y - 14) {
       paddleCPU.y += paddleCPU.yVelocity;
-    } else if ((paddleCPU.y + midCPU) > (ball.y + 14)) {
+    } else if (paddleCPU.y + midCPU > ball.y + 14) {
       paddleCPU.y -= paddleCPU.yVelocity;
     }
 
-    // TODO 1: bounce the ball off the top
+    // TODO 1 & 2: bounce the ball off the top and bottom
+    if (ball.y >= canvas.height) {
+      ball.yVelocity = -ball.yVelocity;
+    } else if (ball.y <= 0) {
+      ball.yVelocity = -ball.yVelocity;
+    }
 
-
-    // TODO 2: bounce the ball off the bottom
-
-
-    // TODO 3: bounce the ball off each of the paddles
-
-
+    // TODO 3 & 4 : bounce the ball off each of the paddles
+    function paddleHit() {
+      if (
+        ball.x >= paddleCPU.x &&
+        ball.y >= paddleCPU.y &&
+        ball.y <= paddleCPU.y + heightCPU
+      ) {
+        ball.xVelocity = -ball.xVelocity;
+      } else if (
+        ball.x <= paddlePlayer.x &&
+        ball.y >= paddlePlayer.y &&
+        ball.y <= paddlePlayer.y + heightPlayer
+      ) {
+        ball.xVelocity = -ball.xVelocity;
+      }
+    }
+    //  else if (ball.x === paddlePlayer.x||ball.x === paddleCPU.x){
+    //   ball.yVelocity = -ball.yVelocity;
+    // }
   }
 
   // helper function that wraps the draw.rect function for easy paddle making
