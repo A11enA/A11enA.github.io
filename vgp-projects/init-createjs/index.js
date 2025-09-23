@@ -10,7 +10,7 @@
 
   // TODO 6: Set the framerate of the Ticker
   
-createjs.Ticker.framerate = 60;
+createjs.Ticker.framerate = 30;
 
   /*
    * TODO 7:CREATE AND CONFIGURE ANY DISPLAY 
@@ -35,6 +35,7 @@ createjs.Ticker.framerate = 60;
   // CREATE A CIRCLE //
 
   const eyeContainer = new createjs.Container();
+  const blinkContainer = new createjs.Container();
 
   eyeContainer.x = 300;
   eyeContainer.y = 300;
@@ -42,6 +43,8 @@ createjs.Ticker.framerate = 60;
   const leftEye = new createjs.Shape();
   const rightEye = new createjs.Shape();
   const mouth = new createjs.Shape();
+  const blinkLeft = new createjs.Shape();
+  const blinkRight = new createjs.Shape();
   
 
   leftEye.graphics
@@ -52,15 +55,24 @@ createjs.Ticker.framerate = 60;
     .beginFill("#fff200ff")
     .drawCircle(150 ,20 ,25) // x, y, radius
 
+    blinkLeft.graphics
+    .beginFill("#fcb1b1ff")
+    .drawCircle( 0 ,15 ,25) // x, y, radius
+
+    blinkRight.graphics
+    .beginFill("#fcb1b1ff")
+    .drawCircle(150 ,15 ,25) // x, y, radius
+
   mouth.graphics
     .beginFill("#ff4141ff")
-    .drawCircle(200 ,450 ,25) // x, y, radius
+    .drawCircle(120 ,500 ,25) // x, y, radius
     
     
     mouth.scaleX = 3
 
   // ADD DISPLAY OBJECTS TO STAGE //
-  eyeContainer.addChild(leftEye, rightEye);
+  blinkContainer.addChild(blinkLeft, blinkRight)
+  eyeContainer.addChild(leftEye, rightEye, blinkContainer);
   stage.addChild(bg, eyeContainer, mouth);
 
   stage.update();
@@ -71,14 +83,34 @@ createjs.Ticker.framerate = 60;
   
 
   // TODO 9: Handle the 'tick' event //
-  
-  function onTick(event) {
+  var scaleFactor = .1
+  var scaleFactorPosition = 50
 
-    if (mouth.scale >= 5){
-      mouth.scaleX--
-    } else if (mouth.scale <= 0){
-      mouth.scaleX++
-    }
+  var blinkScaleFactor = .00000001
+  var blinkScaleFactorPosition = 500
+  function onTick(event) {
+    // X5, up to 5, down to .5
+mouth.scaleY -= scaleFactor
+mouth.y += scaleFactorPosition
+
+blinkContainer.scaleY -= blinkScaleFactor
+blinkContainer.y += blinkScaleFactorPosition
+
+     if (mouth.scaleY >= 2){
+       scaleFactor = -scaleFactor
+       scaleFactorPosition = -scaleFactorPosition
+     } else if (mouth.scaleY <= .5){
+      scaleFactor = -scaleFactor
+      scaleFactorPosition = -scaleFactorPosition
+     }
+
+     if (blinkContainer.scaleY >= 1.5){
+       blinkScaleFactor = -blinkScaleFactor
+        blinkScaleFactorPosition = -blinkScaleFactorPosition
+     } else if (blinkContainer.scaleY <= 1){
+      blinkScaleFactor = -blinkScaleFactor
+      blinkScaleFactorPosition = -blinkScaleFactorPosition
+     }
 
     update(event);
   }
