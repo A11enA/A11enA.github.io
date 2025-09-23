@@ -46,15 +46,15 @@ createjs.Ticker.framerate = 60;
 
   leftEye.graphics
     .beginFill("#eeffbaff")
-    .drawCircle( 0 ,20 ,25) // x, y, width, height
+    .drawCircle( 0 ,20 ,25) // x, y, radius
 
   rightEye.graphics
     .beginFill("#fff200ff")
-    .drawCircle(150 ,20 ,25) // x, y, width, height
+    .drawCircle(150 ,20 ,25) // x, y, radius
 
   mouth.graphics
     .beginFill("#ff4141ff")
-    .drawCircle(200 ,450 ,25) // x, y, width, height
+    .drawCircle(200 ,450 ,25) // x, y, radius
     
     
     mouth.scaleX = 3
@@ -74,7 +74,11 @@ createjs.Ticker.framerate = 60;
   
   function onTick(event) {
 
-    if (mouth.scale)
+    if (mouth.scale >= 5){
+      mouth.scaleX--
+    } else if (mouth.scale <= 0){
+      mouth.scaleX++
+    }
 
     update(event);
   }
