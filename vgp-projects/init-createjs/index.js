@@ -55,9 +55,9 @@
 
   rightLense.graphics.beginFill("#97c4ffff").drawCircle(150, 20, 100); // x, y, radius
   
-  leftFrame.graphics.beginFill("#62360fff").drawCircle(0, 1, 100); // x, y, radius
+  leftFrame.graphics.beginFill("#62360fff").drawCircle(-10, 20, 80); // x, y, radius
 
-  rightFrame.graphics.beginFill("#62360fff").drawCircle(150, 1, 100); // x, y, radius
+  rightFrame.graphics.beginFill("#62360fff").drawCircle(160, 20, 80); // x, y, radius
   
   leftEye.graphics.beginFill("#eeffbaff").drawCircle(0, 20, 25); // x, y, radius
 
