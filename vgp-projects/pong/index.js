@@ -98,11 +98,13 @@
     }
 
     // TODO 1 & 2: bounce the ball off the top and bottom
+    function wallHit () {
     if (ball.y >= canvas.height) {
       ball.yVelocity = -ball.yVelocity;
     } else if (ball.y <= 0) {
       ball.yVelocity = -ball.yVelocity;
     }
+  }
 
     // TODO 3 & 4 : bounce the ball off each of the paddles
       if (
@@ -118,9 +120,7 @@
       ) {
         ball.xVelocity = -ball.xVelocity;
     }
-    //  else if (ball.x === paddlePlayer.x||ball.x === paddleCPU.x){
-    //   ball.yVelocity = -ball.yVelocity;
-    // }
+
   }
 
   // helper function that wraps the draw.rect function for easy paddle making
