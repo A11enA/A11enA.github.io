@@ -1,0 +1,28 @@
+{
+  "name": "librarby",
+  "main": "index.js",
+  "homepage": "https://github.com/A11enA/librarby",
+  "description": "\"gaming library\"",
+  "keywords": [
+    "library",
+    "gaming"
+  ],
+  "authors": [
+    "A11ENA"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "version": "0.2.0",
+  "_release": "0.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.0",
+    "commit": "93c2455c0414c638d28ef2a0810fa628d46c59d6"
+  },
+  "_source": "https://github.com/A11enA/librarby.git",
+  "_target": "^0.2.0",
+  "_originalSource": "https://github.com/A11enA/librarby.git",
+  "_direct": true
+}
