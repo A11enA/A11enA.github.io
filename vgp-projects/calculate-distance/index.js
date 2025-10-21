@@ -71,6 +71,8 @@
      * TODO 6: Check if the mouse is within the area of shapeUp, and set the 
      * alpha property of shapeUp accordingly:
      */
+
+    // shapeUp.alpha = distance > 25 ?  1 :  0
       distance > 25 ? shapeUp.alpha = 1 : shapeOver.alpha = 1
       distance < 25 ? shapeUp.alpha = 0 : shapeOver.alpha = 0
     /*
