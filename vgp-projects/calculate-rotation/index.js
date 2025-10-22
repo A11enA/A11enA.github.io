@@ -38,7 +38,7 @@
       x: stage.mouseX,
     };
 
-    const degrees = librarby.getAngleDegrees(ship, mouse);
+    const degrees = librarby.numz.getAngleDegrees(ship, mouse);
 
     // TODO 8: Set the ship's rotation property to the degrees //
 
