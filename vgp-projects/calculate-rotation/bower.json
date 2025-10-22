@@ -21,6 +21,6 @@
     "opspark-draw": "^1.0.0",
     "racket": "^1.0.2",
     "V6": "^0.0.2",
-    "librarby": "https://github.com/A11enA/librarby.git#^0.2.1"
+    "librarby": "https://github.com/A11enA/librarby.git#^0.2.3"
   }
 }
