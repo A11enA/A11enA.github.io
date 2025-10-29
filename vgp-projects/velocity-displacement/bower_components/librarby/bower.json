@@ -1,0 +1,18 @@
+{
+  "name": "librarby",
+  "main": "index.js",
+  "homepage": "https://github.com/A11enA/librarby",
+  "description": "\"gaming library\"",
+  "keywords": [
+    "library",
+    "gaming"
+  ],
+  "authors": [
+    "A11ENA"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.21"
+    
+  }
+}
