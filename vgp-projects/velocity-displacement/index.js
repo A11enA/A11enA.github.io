@@ -33,7 +33,7 @@
      * is available to you in this scope as, "this".
      * 2. What are the x and y forces acting on our ship?
      */
-    
+     librarby.phyz.updateVelocity(this, propulsion, propulsion)
     // also check if the ship needs to rebound off a boundary //
     reboundCircularAssetInArea(this, canvas);
   };

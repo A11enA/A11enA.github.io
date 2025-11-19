@@ -21,6 +21,7 @@
     }
     
     function onSettingsClicked(event) {
+      console.log("settings here!");
       view.menu.btnSettings.off('click', onSettingsClicked);
       console.log('TODO: show settings');
       // showSettings();
