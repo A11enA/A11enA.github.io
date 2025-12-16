@@ -57,7 +57,7 @@
       phyz.reboundCircularAssetInArea(this, canvas);
     }
 
-    function updateSuperSpeed(event) {
+    function updateShield(event) {
       phyz.updateVelocity(this, 0, 0);
       phyz.reboundCircularAssetInArea(this, canvas);
     }
@@ -202,12 +202,19 @@
         return orb;
       },
       makeSuperSpeed() {
-        const radius = 15
-        const superSpeed = 
-          draw.circle(radius, "#ffff00ff");
-        
-        draw.circle(radius/3, "#ffffffff", null, null, null, null, superSpeed);
-        
+        const radius = 15;
+        const superSpeed = draw.circle(radius, "red");
+
+        draw.circle(
+          radius / 3,
+          "yellow",
+          null,
+          null,
+          null,
+          null,
+          superSpeed
+        );
+
         // console.log(`rad: ${superSpeed.radius}`);
         // console.log(`den: ${superSpeed.radius / 20 * 0.5}`);
         Object.assign(
@@ -227,10 +234,10 @@
         return superSpeed;
       },
       makeInstaHeal() {
-        const superSpeed = 
-          draw.circle(radius, "limegreen");
-        
-        draw.circle(radius/3, "#ff0202ff", null, null, null, null, InstaHeal);
+        const radius = 15;
+        const instaHeal = draw.circle(radius, "limegreen");
+
+        draw.circle(radius / 3, "#0fff02ff", null, null, null, null, instaHeal);
         // console.log(`rad: ${instaHeal.radius}`);
         // console.log(`den: ${instaHeal.radius / 20 * 0.5}`);
         Object.assign(
@@ -250,7 +257,10 @@
         return instaHeal;
       },
       makeMorePoints() {
-        const morePoints = draw.circle(15, "#ffee00ff");
+        const radius = 15;
+        const morePoints = draw.circle(15, "grey");
+
+        draw.circle(radius / 3, "red", null, null, null, null, morePoints);
         // console.log(`rad: ${morePoints.radius}`);
         // console.log(`den: ${morePoints.radius / 20 * 0.5}`);
         Object.assign(
@@ -265,29 +275,32 @@
         morePoints.x = numz.randomIntBetween(0, canvas.width);
         morePoints.y = numz.randomIntBetween(0, canvas.height);
 
-        morePoints.update = updatemorePoints;
+        morePoints.update = updateMorePoints;
 
         return morePoints;
       },
-      makeSheild() {
-        const sheild = draw.circle(15, "#ffee00ff");
-        // console.log(`rad: ${sheild.radius}`);
-        // console.log(`den: ${sheild.radius / 20 * 0.5}`);
+      makeshield() {
+        const radius = 15;
+        const shield = draw.circle(15, "#0022ffff");
+
+        draw.circle(radius / 3, "brown", null, null, null, null, shield);
+        // console.log(`rad: ${shield.radius}`);
+        // console.log(`den: ${shield.radius / 20 * 0.5}`);
         Object.assign(
-          sheild,
-          phyz.makeBody("sheild", {
-            density: (sheild.radius / 20) * 0.5,
-            volatility: sheild.radius * 0.0001,
+          shield,
+          phyz.makeBody("shield", {
+            density: (shield.radius / 20) * 0.5,
+            volatility: shield.radius * 0.0001,
           })
         );
-        phyz.addRandomVelocity(sheild, canvas);
+        phyz.addRandomVelocity(shield, canvas);
 
-        sheild.x = numz.randomIntBetween(0, canvas.width);
-        sheild.y = numz.randomIntBetween(0, canvas.height);
+        shield.x = numz.randomIntBetween(0, canvas.width);
+        shield.y = numz.randomIntBetween(0, canvas.height);
 
-        sheild.update = updateSheild;
+        shield.update = updateShield;
 
-        return sheild;
+        return shield;
       },
       centerOnStage,
     };

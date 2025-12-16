@@ -48,8 +48,17 @@
         });
       }
 
-      function handleCollisionShip(impact) {
-        // console.log
+      function handleCollisionShip(impact, body) {
+        //console.log("COLLIDE!")
+        if (body.type === "projectile"){
+          if (this.shield){
+            return
+          }
+        }
+        if (body.type === "instaHeal"){
+          this.integrity = 1
+          return
+        } 
         if (this.integrity > 0) {
           this.integrity -= impact;
           messenger.dispatch({ type: "DAMAGE", source: "ship", target: this });

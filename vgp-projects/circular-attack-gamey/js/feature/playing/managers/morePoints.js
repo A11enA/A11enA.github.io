@@ -53,7 +53,7 @@
         };
       
       function makeObject() {
-        const morePoints = assets.makemorePoints();
+        const morePoints = assets.makeMorePoints();
         morePoints.handleCollision = handleCollision;
         return morePoints;
       }
@@ -67,7 +67,10 @@
         // body.emitter is ship that shot/fired projectile
         if (body.type == "projectile") {
             body.emitter.morePoints = true
-            this.destroy
+            setTimeout(function () {
+            body.emitter.morePoints = false;
+          }, 10000);
+            this.integrity = 0
         }
 
         /*
@@ -75,7 +78,7 @@
          * but have already exploded, so check first to see 
          * if it has integrity before running check to exlode.
          */
-        if (this.integrity > 0) {
+        if (this.integrity >= 0) {
           console.log(impact);
           this.integrity -= impact;
           if (this.integrity <= 0) {

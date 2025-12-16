@@ -30,7 +30,7 @@
      * Use render() to config and position components.
      */
     function render() {
-      canvas.style.backgroundColor = '#FFF';
+      canvas.style.backgroundColor = '#000000ff';
       
       textfield.alpha = 0;
       textfield.x = canvas.width / 2;

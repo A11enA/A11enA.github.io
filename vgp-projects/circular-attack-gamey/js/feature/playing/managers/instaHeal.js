@@ -53,7 +53,7 @@
         };
       
       function makeObject() {
-        const instaHeal = assets.makeinstaHeal();
+        const instaHeal = assets.makeInstaHeal();
         instaHeal.handleCollision = handleCollision;
         return instaHeal;
       }
@@ -66,8 +66,7 @@
         // if body.type is a "projectile" : destroy the instaHeal, and apply powerup to the shooter
         // body.emitter is ship that shot/fired projectile
         if (body.type == "projectile") {
-            body.emitter.instaHeal = true
-            this.destroy
+            this.integrity = 0
         }
 
         /*
@@ -75,7 +74,7 @@
          * but have already exploded, so check first to see 
          * if it has integrity before running check to exlode.
          */
-        if (this.integrity > 0) {
+        if (this.integrity >= 0) {
           console.log(impact);
           this.integrity -= impact;
           if (this.integrity <= 0) {

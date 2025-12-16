@@ -9,7 +9,7 @@
 
   // BUTTON //
   _.set(opspark, 'factory.component.button',
-    function(text, colorUp = '#5cb85c', colorOver = '#4cae4c', scaleWidthToParent = false) {
+    function(text, colorUp = '#000000ff', colorOver = '#000000ff', scaleWidthToParent = false) {
       const
         container = new createjs.Container(),
         textfield = draw.textfield(text, 'bold 25px Arial', '#FFF', 'left'),

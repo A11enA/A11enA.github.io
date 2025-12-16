@@ -44,12 +44,12 @@
             FIRE: controls.KEYS.SHIFT_LEFT,
           })
           .spawn("#f44242"),
-        orb = opspark.playa.orb(assets, fx, messenger).spawn(1);
+        orb = opspark.playa.orb(assets, fx, messenger).spawn(50);
 
       superSpeed = opspark.playa.superSpeed(assets, fx, messenger).spawn(1);
       instaHeal = opspark.playa.instaHeal(assets, fx, messenger).spawn(1);
       morePoints = opspark.playa.morePoints(assets, fx, messenger).spawn(1);
-      sheild = opspark.playa.sheild(assets, fx, messenger).spawn(1);
+      shield = opspark.playa.shield(assets, fx, messenger).spawn(1);
 
       game.view.addChild(view.container);
 

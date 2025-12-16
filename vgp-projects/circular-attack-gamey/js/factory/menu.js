@@ -28,7 +28,7 @@
           width,
           canvas.height - 20,
           4,
-          '#FFF',
+          '#04012eff',
           '#CCC',
           1);
       asset.addChild(background);
