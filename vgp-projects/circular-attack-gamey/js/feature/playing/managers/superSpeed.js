@@ -67,6 +67,9 @@
         // body.emitter is ship that shot/fired projectile
         if (body.type == "projectile") {
             body.emitter.superSpeed = true
+            setTimeout(function () {
+            body.emitter.superSpeed = false;
+          }, 5000);
             this.integrity = 0
         }
 
