@@ -50,11 +50,14 @@
             
             // TODO 1: Calculate hit test components
             
-            
+            var distanceX = bodyA.x  - bodyB.x;
+            var distanceY = bodyA.y - bodyB.y;
+            var distance = Math.sqrt((distanceX ** 2) + (distanceY ** 2));
+            var minimumDistance = (distance - bodyA.radius) + (distance - bodyB.radius);
               
             // TODO 2: Do collision check: how do we know if bodies are colliding?
-            if(/* replace with collision check */ false) {
-              // console.log('hit!');
+            if(distance <= minimumDistance) {
+               console.log('hit!');
               
               // TODO 3: Calculate springToX and springToY 
               
