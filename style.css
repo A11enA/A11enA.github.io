@@ -57,6 +57,13 @@ main {
   padding: 15px;
 }
 
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
 /* portfolio styles */
 #interests {
   border: 4px rgb(255, 255, 255) ridge;
